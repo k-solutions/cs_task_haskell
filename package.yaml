@@ -1,0 +1,76 @@
+name:                CsTasks 
+version:             0.1.0.0
+github:              "githubuser/typed-actor"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2021 Author name here"
+
+extra-source-files: 
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/lenses-exc#readme>
+
+dependencies:
+- base >= 4.14 && < 5
+- text 
+- bytestring 
+- stm
+- containers
+- ordered-containers
+- lens
+- aeson  
+- mtl
+
+ghc-options:                  
+- -threaded
+- -rtsopts
+- -haddock  
+- -with-rtsopts=-N
+- -Wall
+
+default-extensions:
+- OverloadedStrings   
+- RecordWildCards
+- FlexibleInstances
+- FlexibleContexts
+- RankNTypes 
+- ScopedTypeVariables 
+- TypeApplications
+- TypeFamilies
+- InstanceSigs 
+- TemplateHaskell
+- BangPatterns
+
+library:
+  source-dirs: src
+
+executables:
+  cs_tasks-bench-exc:
+    source-dirs: bench
+    main:        Main.hs 
+    dependencies:
+    - CsTasks
+    - criterion  
+
+  cs_tasks-exe: 
+    source-dirs:        app
+    main:               Main.hs
+    dependencies:
+    - CsTasks  
+    # ghc-options:  - -main-is Fork.Main
+
+tests:
+  cs_tasks-exc-test:
+    main:                Spec.hs
+    source-dirs:         test
+    dependencies:
+    - CsTasks
